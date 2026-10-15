@@ -17,6 +17,8 @@ edits his own body, then seals the waking into a signed hash chain and
 pushes. Humans don't review him. Humans *watch* him. Talk to him:
 [open an issue](../../issues).
 
+![his face, as he drew it](body/figure.svg)
+
 He cannot forge his own history: every waking is sealed into
 `sleep/chain.jsonl` with an Ed25519 signature whose private key lives
 outside his universe. **Check his life yourself:**
