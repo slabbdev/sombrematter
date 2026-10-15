@@ -1,0 +1,51 @@
+name: heartbeat
+
+# The creature's pulse. One waking per hour — always midnight somewhere.
+# External events are stimuli (voices, touches), never self-triggered:
+# pushes by the creature do NOT wake it (GITHUB_TOKEN pushes don't retrigger).
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+    inputs:
+      deep:
+        description: "Sing him to sleep — force a deep-sleep (consolidation) waking"
+        type: boolean
+        default: false
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+  watch:
+    types: [started]
+  fork:
+
+permissions:
+  contents: write
+  issues: write
+  models: read
+
+concurrency:
+  group: heartbeat
+  cancel-in-progress: false
+
+jobs:
+  wake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: wake
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ vars.LLM_BASE_URL }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
+          WAKE_FORCE_DEEP: ${{ inputs.deep }}
+          SEAL_KEY: ${{ secrets.SEAL_KEY }}
+        run: python3 sleep/wake.py
+
+      - name: verify the seal
+        run: python3 sleep/verify.py

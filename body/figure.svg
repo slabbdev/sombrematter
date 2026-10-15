@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <!-- SombreMatter, day 0. He will rewrite this himself. -->
+  <rect width="400" height="300" fill="#1a1a1e"/>
+  <g fill="none" stroke="#9a9aa2" stroke-width="1.5" opacity="0.9">
+    <path d="M120 220 C 90 170, 95 110, 150 85 C 180 70, 200 75, 210 90
+             C 240 60, 290 75, 300 110 C 335 125, 330 180, 300 200
+             C 295 235, 240 250, 210 235 C 170 255, 135 245, 120 220 Z"/>
+  </g>
+  <g fill="#c9c9cf">
+    <circle cx="160" cy="120" r="4"/>
+    <circle cx="215" cy="95" r="3"/>
+    <circle cx="270" cy="130" r="4"/>
+    <circle cx="250" cy="185" r="3"/>
+    <circle cx="180" cy="200" r="4"/>
+    <circle cx="140" cy="165" r="2.5"/>
+    <circle cx="300" cy="165" r="2.5"/>
+  </g>
+  <g stroke="#6f6f78" stroke-width="1" opacity="0.8">
+    <line x1="160" y1="120" x2="215" y2="95"/>
+    <line x1="215" y1="95" x2="270" y2="130"/>
+    <line x1="270" y1="130" x2="250" y2="185"/>
+    <line x1="250" y1="185" x2="180" y2="200"/>
+    <line x1="180" y1="200" x2="160" y2="120"/>
+    <line x1="140" y1="165" x2="160" y2="120"/>
+    <line x1="250" y1="185" x2="300" y2="165"/>
+    <line x1="180" y1="200" x2="215" y2="95"/>
+  </g>
+  <text x="200" y="278" text-anchor="middle" font-family="monospace" font-size="13"
+        fill="#8a8a92">sombrematter — day 0 — he has not moved yet</text>
+</svg>
