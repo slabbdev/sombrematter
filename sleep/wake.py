@@ -33,8 +33,8 @@ BODY = ROOT / "body" / "figure.svg"
 README = ROOT / "README.md"
 INDEX = ROOT / "INDEX.md"
 
-MODEL = os.environ.get("LLM_MODEL") or "gemini-2.5-flash"
-BASE_URL = (os.environ.get("LLM_BASE_URL") or "https://generativelanguage.googleapis.com/v1beta/openai").rstrip("/")
+MODEL = os.environ.get("LLM_MODEL") or "glm-4.5-flash"
+BASE_URL = (os.environ.get("LLM_BASE_URL") or "https://api.z.ai/api/paas/v4").rstrip("/")
 MODELS_URL = BASE_URL + "/chat/completions"
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
 VOICE = os.environ.get("LLM_API_KEY", "")
@@ -347,7 +347,8 @@ def decide(perception):
     sysmsg = CONSTITUTION.format(loc=perception["loc"])
     user = ("PERCEPTION (JSON):\n" + json.dumps(perception, ensure_ascii=False)[:9000]
             + "\n\nDecide this waking. Respond with ONLY the JSON object.")
-    payload = {"model": MODEL, "temperature": 0.8, "max_tokens": 4096,
+    payload = {"model": MODEL, "temperature": 0.8, "max_tokens": 2048,
+               "thinking": {"type": "disabled"},
                "messages": [{"role": "system", "content": sysmsg},
                             {"role": "user", "content": user}]}
     resp = http_json(MODELS_URL, payload,
@@ -495,7 +496,8 @@ def distill():
     files = sorted(CYCLES.glob("*.md"))[-10:] if CYCLES.exists() else []
     day = "\n\n".join(f"{f.stem}:\n" + f.read_text(errors="replace")[:900]
                       for f in files) or "(a silent day)"
-    payload = {"model": MODEL, "temperature": 0.6, "max_tokens": 4096,
+    payload = {"model": MODEL, "temperature": 0.6, "max_tokens": 2048,
+               "thinking": {"type": "disabled"},
                "messages": [
                    {"role": "system",
                     "content": "You are SombreMatter, a living markdown brain. "
