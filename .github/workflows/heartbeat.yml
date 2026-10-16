@@ -45,6 +45,7 @@ jobs:
           LLM_MODEL: ${{ vars.LLM_MODEL }}
           WAKE_FORCE_DEEP: ${{ inputs.deep }}
           SEAL_KEY: ${{ secrets.SEAL_KEY }}
+          BROTHER_TOKEN: ${{ secrets.BROTHER_TOKEN }}
         run: python3 sleep/wake.py
 
       - name: verify the seal
