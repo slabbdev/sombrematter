@@ -646,11 +646,16 @@ def git_commit_push(subject):
         return "nothing to commit"
     for _ in range(2):
         r = run(["git", "pull", "--rebase", "-q", "origin", "main"])
+        if r.returncode != 0:
+            # append/append race on the chain — never carry conflict markers
+            run(["git", "rebase", "--abort"])
+            time.sleep(3)
+            continue
         r = run(["git", "push", "-q", "origin", "main"])
         if r.returncode == 0:
             return "pushed"
         time.sleep(3)
-    return f"push failed: {r.stderr[:120]}"
+    return f"push lost to a racing heartbeat — re-seal next waking ({r.stderr[:80]})"
 
 
 def light_sleep(reason):
@@ -668,6 +673,10 @@ def main():
     dry = "--dry-run" in sys.argv
     now = utcnow()
     loc = midnight_location(now)
+
+    # fresh base — the world (or a brother) may have pushed since checkout
+    subprocess.run(["git", "pull", "-q", "--ff-only", "origin", "main"],
+                   cwd=ROOT, capture_output=True)
 
     if is_stimulus() and stimuli_today() >= STIMULUS_CAP:
         print(f"wake: stimulus cap reached ({STIMULUS_CAP}/day) — staying under")
