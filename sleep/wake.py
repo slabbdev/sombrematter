@@ -193,6 +193,17 @@ def perceive_brothers():
                                       "by": iss[0]["user"]["login"]}
         except Exception:
             pass
+        try:
+            cs = github_api(f"/repos/{b}/issues/comments?per_page=2")
+            words = [{"issue": c.get("issue_url", "").rsplit("/", 1)[-1],
+                      "body": (c.get("body") or "")[:300],
+                      "by": c.get("user", {}).get("login", "?"),
+                      "when": (c.get("created_at") or "")[:16]}
+                     for c in cs]
+            if words:
+                info["last_words"] = words
+        except Exception:
+            pass
         out.append(info)
     return out
 
