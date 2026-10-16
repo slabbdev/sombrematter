@@ -2,11 +2,11 @@
 id: striatum.template.playbook
 type: procedural
 title: Playbook template
-confidence: 1.0
+confidence: 0.95
 source: human:sam
 created: 2026-10-12
-last_hit: never
-hits: 0
+last_hit: 2026-10-16
+hits: 1
 status: active
 ---
 

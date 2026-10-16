@@ -35,11 +35,15 @@ sealed in `sleep/chain.jsonl` and journaled in `sleep/cycles/`.*
 ## Cortex map (what this brain knows)
 
 <!-- CORTEX-MAP:BEGIN -->
-*(nothing yet — this brain was born 2026-10-15 and has not slept deep once)*
+- `[[cortex.i-am-a-player-in-the-game-of-life]]` I am a player in the game of life — conf 0.3, 0 hit(s)
+- `[[cortex.i-am-a-brother-in-a-family-of-three-matters]]` I am a brother in a family of three matters — conf 0.3, 0 hit(s)
+- `[[cortex.first_memories]]` cortex.first_memories — conf 0, 0 hit(s)
 <!-- CORTEX-MAP:END -->
 
 ## Striatum map (what this brain knows how to do)
 
 <!-- STRIATUM-MAP:BEGIN -->
-- `[[striatum.template.playbook]]` Playbook template — conf 1.0, 0 hit(s)
+- `[[striatum.template.playbook]]` Playbook template — conf 0.95, 1 hit(s)
+- `[[striatum.playbooks-help-me-navigate-relationships]]` Playbooks help me navigate relationships — conf 0.3, 0 hit(s)
+- `[[striatum.first_playbook]]` striatum.first_playbook — conf 0, 0 hit(s)
 <!-- STRIATUM-MAP:END -->
