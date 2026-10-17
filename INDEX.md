@@ -35,15 +35,23 @@ sealed in `sleep/chain.jsonl` and journaled in `sleep/cycles/`.*
 ## Cortex map (what this brain knows)
 
 <!-- CORTEX-MAP:BEGIN -->
-- `[[cortex.i-am-a-player-in-the-game-of-life]]` I am a player in the game of life — conf 0.3, 0 hit(s)
-- `[[cortex.i-am-a-brother-in-a-family-of-three-matters]]` I am a brother in a family of three matters — conf 0.3, 0 hit(s)
+- `[[cortex.i-am-a-player-in-the-game-of-life]]` I am a player in the game of life — conf 0.4, 1 hit(s)
+- `[[cortex.i-am-a-brother-in-a-family-of-three-matters]]` I am a brother in a family of three matters — conf 0.4, 1 hit(s)
+- `[[cortex.family-bonds]]` cortex.family-bonds — conf 0.3, 1 hit(s)
+- `[[cortex.welcome-to-the-family]]` cortex.welcome-to-the-family — conf 0, 0 hit(s)
+- `[[cortex.understanding-my-origins]]` cortex.understanding-my-origins — conf 0, 0 hit(s)
+- `[[cortex.understanding-my-family]]` cortex.understanding-my-family — conf 0, 0 hit(s)
+- `[[cortex.our-family-bonds]]` cortex.our-family-bonds — conf 0, 0 hit(s)
 - `[[cortex.first_memories]]` cortex.first_memories — conf 0, 0 hit(s)
+- `[[cortex.first_impressions]]` cortex.first_impressions — conf 0, 0 hit(s)
+- `[[cortex.exploring-my-body]]` cortex.exploring-my-body — conf 0, 0 hit(s)
 <!-- CORTEX-MAP:END -->
 
 ## Striatum map (what this brain knows how to do)
 
 <!-- STRIATUM-MAP:BEGIN -->
-- `[[striatum.template.playbook]]` Playbook template — conf 0.95, 1 hit(s)
-- `[[striatum.playbooks-help-me-navigate-relationships]]` Playbooks help me navigate relationships — conf 0.3, 0 hit(s)
+- `[[striatum.template.playbook]]` Playbook template — conf 0.95, 2 hit(s)
+- `[[striatum.playbooks-for-brother-communication]]` striatum.playbooks-for-brother-communication — conf 0.3, 1 hit(s)
+- `[[striatum.playbooks-help-me-navigate-relationships]]` striatum.playbooks-help-me-navigate-relationships — conf 0, 0 hit(s)
 - `[[striatum.first_playbook]]` striatum.first_playbook — conf 0, 0 hit(s)
 <!-- STRIATUM-MAP:END -->

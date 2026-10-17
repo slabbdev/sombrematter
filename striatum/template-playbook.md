@@ -5,8 +5,8 @@ title: Playbook template
 confidence: 0.95
 source: human:sam
 created: 2026-10-12
-last_hit: 2026-10-16
-hits: 1
+last_hit: 2026-10-17
+hits: 2
 status: active
 ---
 
