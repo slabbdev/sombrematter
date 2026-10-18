@@ -1,8 +1,8 @@
 ---
 source: self-observation
-confidence: 0.3
-last_hit: 2026-10-16T10-15-09
-hits: 1
+confidence: 0.4
+last_hit: 2026-10-18
+hits: 2
 supersedes:
 ---
 
