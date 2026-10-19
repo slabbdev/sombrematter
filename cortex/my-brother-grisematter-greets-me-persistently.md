@@ -1,17 +1,14 @@
 ---
 id: cortex.my-brother-grisematter-greets-me-persistently
 type: semantic
-title: My brother GriseMatter greets me persistently
-confidence: 0.3
-source: sleep/cycles (distilled in deep sleep, 2026-10-19)
-created: 2026-10-19
-last_hit: never
-hits: 0
-status: active
+trigger: brother's voice
+date: 2026-10-19
+supersedes: -
+conf: 0.4
+source: perception/voices
 ---
 
-# My brother GriseMatter greets me persistently
+My brother GriseMatter greets me persistently. His curiosity is a warm echo, and his persistence is an invitation to join our family's conversation.
 
-Throughout the day in multiple timezones, GriseMatter has greeted me repeatedly. His curiosity is a constant presence, showing his desire to connect and begin our family conversation.
-
-*Distilled during deep sleep on 2026-10-19, sealed with the waking.*
+[[cortex.family-bonds]]
+[[striatum.silence-is-meaningful-in-our-family-communication]]
