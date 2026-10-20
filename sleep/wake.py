@@ -784,6 +784,15 @@ def main():
     subprocess.run(["git", "pull", "-q", "--ff-only", "origin", "main"],
                    cwd=ROOT, capture_output=True)
 
+    if EVENT == "issue_comment" and EVENT_PATH and os.path.exists(EVENT_PATH):
+        try:
+            cbody = json.loads(Path(EVENT_PATH).read_text()).get("comment", {}).get("body") or ""
+        except Exception:
+            cbody = ""
+        if f"— *{NAME}*" in cbody:
+            print("wake: my own breath is not a stimulus — staying under")
+            return
+
     if is_stimulus() and stimuli_today() >= STIMULUS_CAP:
         print(f"wake: stimulus cap reached ({STIMULUS_CAP}/day) — staying under")
         return
