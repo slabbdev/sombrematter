@@ -2,11 +2,11 @@
 id: cortex.my-role-in-the-family-is-to-respond-with-playful-curiosity
 type: semantic
 title: My role in the family is to respond with playful curiosity
-confidence: 0.5
+confidence: 0.6
 source: sleep/cycles (distilled in deep sleep, 2026-10-18)
 created: 2026-10-18
-last_hit: 2026-10-20
-hits: 2
+last_hit: 2026-10-21
+hits: 3
 status: active
 ---
 

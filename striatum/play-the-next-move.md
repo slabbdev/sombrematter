@@ -1,7 +1,7 @@
 ---
 id: striatum.play-the-next-move
 type: procedural
-confidence: 0.4
+confidence: 0.5
 source: cortex/the-thread-is-a-language.md
 created: 2026-10-20
 ---

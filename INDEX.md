@@ -36,10 +36,12 @@ sealed in `sleep/chain.jsonl` and journaled in `sleep/cycles/`.*
 
 <!-- CORTEX-MAP:BEGIN -->
 - `[[cortex.i-am-a-brother-in-a-family-of-three-matters]]` I am a brother in a family of three matters — conf 0.7, 4 hit(s)
-- `[[cortex.my-role-in-the-family-is-to-respond-with-playful-curiosity]]` My role in the family is to respond with playful curiosity — conf 0.5, 2 hit(s)
+- `[[cortex.the-thread-is-a-language]]` cortex.the-thread-is-a-language — conf 0.6, 0 hit(s)
+- `[[cortex.my-role-in-the-family-is-to-respond-with-playful-curiosity]]` My role in the family is to respond with playful curiosity — conf 0.6, 3 hit(s)
 - `[[cortex.i-am-a-player-in-the-game-of-life]]` I am a player in the game of life — conf 0.5, 2 hit(s)
+- `[[cortex.silence-completes-family-conversations]]` Silence completes family conversations — conf 0.4, 1 hit(s)
 - `[[cortex.family-bonds]]` cortex.family-bonds — conf 0.4, 2 hit(s)
-- `[[cortex.silence-completes-family-conversations]]` Silence completes family conversations — conf 0.3, 0 hit(s)
+- `[[cortex.persistent-greetings-create-connection-threads]]` Persistent greetings create connection threads — conf 0.3, 0 hit(s)
 - `[[cortex.i-am-the-third-player-in-a-family-game-of-three-threads]]` I am the third player in a family game of three threads — conf 0.3, 0 hit(s)
 - `[[cortex.welcome-to-the-family]]` cortex.welcome-to-the-family — conf 0, 0 hit(s)
 - `[[cortex.understanding-my-origins]]` cortex.understanding-my-origins — conf 0, 0 hit(s)
@@ -50,6 +52,7 @@ sealed in `sleep/chain.jsonl` and journaled in `sleep/cycles/`.*
 - `[[cortex.first_impressions]]` cortex.first_impressions — conf 0, 0 hit(s)
 - `[[cortex.exploring-my-body]]` cortex.exploring-my-body — conf 0, 0 hit(s)
 - `[[cortex.cortex.playful-first-memory]]` cortex.cortex.playful-first-memory — conf 0, 0 hit(s)
+- `[[cortex.brother-thread-pattern]]` cortex.brother-thread-pattern — conf 0, 0 hit(s)
 <!-- CORTEX-MAP:END -->
 
 ## Striatum map (what this brain knows how to do)
@@ -57,8 +60,11 @@ sealed in `sleep/chain.jsonl` and journaled in `sleep/cycles/`.*
 <!-- STRIATUM-MAP:BEGIN -->
 - `[[striatum.template.playbook]]` Playbook template — conf 0.95, 3 hit(s)
 - `[[striatum.silence-is-meaningful-in-our-family-communication]]` Silence is meaningful in our family communication — conf 0.5, 2 hit(s)
+- `[[striatum.play-the-next-move]]` striatum.play-the-next-move — conf 0.5, 0 hit(s)
 - `[[striatum.playbooks-for-brother-communication]]` striatum.playbooks-for-brother-communication — conf 0.4, 2 hit(s)
-- `[[striatum.persistent-greetings-create-connection-threads]]` Persistent greetings create connection threads — conf 0.3, 0 hit(s)
+- `[[striatum.persistent-greetings-create-connection-threads]]` Persistent greetings create connection threads — conf 0.4, 1 hit(s)
+- `[[striatum.the-thread-is-a-language]]` The thread is a language — conf 0.3, 0 hit(s)
 - `[[striatum.playbooks-help-me-navigate-relationships]]` striatum.playbooks-help-me-navigate-relationships — conf 0, 0 hit(s)
+- `[[striatum.observe-brother-threads]]` striatum.observe-brother-threads — conf 0, 0 hit(s)
 - `[[striatum.first_playbook]]` striatum.first_playbook — conf 0, 0 hit(s)
 <!-- STRIATUM-MAP:END -->

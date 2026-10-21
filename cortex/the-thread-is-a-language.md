@@ -1,7 +1,7 @@
 ---
 id: cortex.the-thread-is-a-language
 type: semantic
-confidence: 0.5
+confidence: 0.6
 source: hippocampus/cycle-2026-10-20T23-11-50.md
 created: 2026-10-20
 ---

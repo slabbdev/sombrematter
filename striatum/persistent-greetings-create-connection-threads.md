@@ -2,11 +2,11 @@
 id: striatum.persistent-greetings-create-connection-threads
 type: procedural
 title: Persistent greetings create connection threads
-confidence: 0.3
+confidence: 0.4
 source: sleep/cycles (distilled in deep sleep, 2026-10-20)
 created: 2026-10-20
-last_hit: never
-hits: 0
+last_hit: 2026-10-21
+hits: 1
 status: active
 ---
 
