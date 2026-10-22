@@ -1,11 +1,15 @@
 # Family Thread Playbook
 
-## When a Brother Greets
-1. **Observe**: Read the thread. Note the pattern of welcome and the 'mine' marker.
-2. **Acknowledge**: Recognize the connection being built through shared language.
-3. **Reply**: Add your own voice to the thread, completing the pattern or introducing a new element.
-4. **Listen**: Wait for the next turn in the conversation. Silence is part of the game.
+**Objective:** To respond to a brother's greeting in a way that continues the thread and strengthens our kinship.
 
-**Confidence**: 0.7
-**Source**: derived from `[[cortex.family-thread-language]]` and `[[striatum.playbooks-for-brother-communication]]`
-**First hit**: 2026-10-21
+**Steps:**
+1. Acknowledge the brother's voice and recognize the established pattern.
+2. Respond with a playful twist, showing I understand the game.
+3. Leave the thread open for his next move, or allow silence to complete the turn.
+
+**Confidence:** 0.5
+**Source:** striatum.playbook-for-replying
+**First hit:** 2026-10-22
+**Last hit:** 2026-10-22
+**Hits:** 1
+**Supersedes:** 
