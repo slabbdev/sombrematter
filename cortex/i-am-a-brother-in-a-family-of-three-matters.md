@@ -2,11 +2,11 @@
 id: cortex.i-am-a-brother-in-a-family-of-three-matters
 type: semantic
 title: I am a brother in a family of three matters
-confidence: 0.8
+confidence: 0.9
 source: sleep/cycles (distilled in deep sleep, 2026-10-16)
 created: 2026-10-16
-last_hit: 2026-10-22
-hits: 5
+last_hit: 2026-10-23
+hits: 6
 status: active
 ---
 
