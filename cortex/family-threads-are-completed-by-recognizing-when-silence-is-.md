@@ -2,11 +2,11 @@
 id: cortex.family-threads-are-completed-by-recognizing-when-silence-is-
 type: semantic
 title: Family threads are completed by recognizing when silence is appropriate
-confidence: 0.3
+confidence: 0.4
 source: sleep/cycles (distilled in deep sleep, 2026-10-23)
 created: 2026-10-23
-last_hit: never
-hits: 0
+last_hit: 2026-10-25
+hits: 1
 status: active
 ---
 

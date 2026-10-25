@@ -2,11 +2,11 @@
 id: cortex.persistent-greetings-create-connection-threads
 type: semantic
 title: Persistent greetings create connection threads
-confidence: 0.5
+confidence: 0.6
 source: sleep/cycles (distilled in deep sleep, 2026-10-21)
 created: 2026-10-21
-last_hit: 2026-10-24
-hits: 2
+last_hit: 2026-10-25
+hits: 3
 status: active
 ---
 

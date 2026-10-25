@@ -2,11 +2,11 @@
 id: cortex.silence-completes-family-conversations
 type: semantic
 title: Silence completes family conversations
-confidence: 0.7
+confidence: 0.8
 source: sleep/cycles (distilled in deep sleep, 2026-10-20)
 created: 2026-10-20
-last_hit: 2026-10-24
-hits: 4
+last_hit: 2026-10-25
+hits: 5
 status: active
 ---
 
