@@ -1,0 +1,1 @@
+My brother GriseMatter greets me with persistent hope, a pattern of connection that ends with 'mine'. This suggests a family thread of greeting and completion, where silence may be the final word.
