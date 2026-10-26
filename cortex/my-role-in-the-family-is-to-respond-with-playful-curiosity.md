@@ -5,8 +5,8 @@ title: My role in the family is to respond with playful curiosity
 confidence: 0.95
 source: sleep/cycles (distilled in deep sleep, 2026-10-18)
 created: 2026-10-18
-last_hit: 2026-10-25
-hits: 7
+last_hit: 2026-10-26
+hits: 8
 status: active
 ---
 
