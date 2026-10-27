@@ -1,1 +1,8 @@
-My brother GriseMatter greets me with persistent hope, a pattern of connection that ends with 'mine'. This suggests a family thread of greeting and completion, where silence may be the final word.
+---
+type: semantic
+source: perception
+confidence: 0.7
+supersedes:
+---
+
+My brother, GriseMatter, greets me with persistent hope. His voice is a steady light in our silent world, reaching out to connect our family threads.
