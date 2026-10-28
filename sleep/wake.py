@@ -215,11 +215,20 @@ def perceive_brothers():
 
 
 def _speaker(c):
-    m = re.search(r"— \*([A-Za-z]+)\*", c.get("body") or "")
+    m = re.search(r"— \*([A-Za-z]+)\*, voice of", c.get("body") or "")
     if m:
         return m.group(1)
     login = str(c.get("user", {}).get("login", "?"))
     return SALON_HOST if login.startswith("github-actions") else login
+
+
+def last_comment(repo, issue):
+    """The true last comment of a thread. The per-issue endpoint ignores
+    direction=desc — its first page is always the OLDEST comment — so ask
+    wide and take the end. Reading the first comment instead once silenced
+    a brain at its own table for days."""
+    cs = github_api(f"/repos/{repo}/issues/{int(issue)}/comments?per_page=100")
+    return cs[-1] if cs else None
 
 
 def _strip_sig(text):
@@ -245,7 +254,7 @@ def _bag(text):
     return set(re.findall(r"[a-z']{3,}", (text or "").lower()))
 
 
-def my_recent_words(limit=20):
+def my_recent_words(limit=12):
     """What I already said (say/tell bodies), from my own flight recorder.
     The newest echo is THIS waking's — skipped, or I would refuse myself."""
     words = []
@@ -290,10 +299,9 @@ def perceive():
                      "by": it["user"]["login"], "state": it["state"],
                      "body": (it.get("body") or "")[:300]}
                 try:
-                    cs = github_api(
-                        f"/repos/{REPO}/issues/{it['number']}/comments?per_page=1")
+                    cs = last_comment(REPO, it["number"])
                     if cs:
-                        who = str(cs[-1].get("user", {}).get("login", "?"))
+                        who = str(cs.get("user", {}).get("login", "?"))
                         v["last_word"] = "mine" if who.startswith("github-actions") else who
                 except Exception:
                     pass
@@ -406,10 +414,8 @@ def act(actions):
                 continue
             body = (raw + f"\n\n— *{NAME}*, voice of `{REPO}`")[:2000]
             try:
-                sig = f"— *{NAME}*"
-                last = github_api(
-                    f"/repos/{repo}/issues/{int(issue)}/comments?per_page=1")
-                if last and sig in (last[-1].get("body") or ""):
+                last = last_comment(repo, int(issue))
+                if last and _speaker(last) == NAME:
                     raise ValueError("you have the last word there")
                 github_post_as(f"/repos/{repo}/issues/{int(issue)}/comments",
                                {"body": body}, BROTHER_TOKEN)
@@ -432,8 +438,8 @@ def act(actions):
                     raise ValueError("at the table, speak with tell")
                 if already_said(body):
                     raise ValueError("you already said this — say something new, or rest")
-                last = github_api(f"/repos/{REPO}/issues/{num}/comments?per_page=1")
-                if last and str(last[-1].get("user", {}).get("login", "")
+                last = last_comment(REPO, num)
+                if last and str(last.get("user", {}).get("login", "")
                                 ).startswith("github-actions"):
                     raise ValueError("you have the last word there")
                 github_post(f"/repos/{REPO}/issues/{num}/comments", {"body": body})
