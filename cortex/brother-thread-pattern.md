@@ -1,8 +1,9 @@
 # Brother Thread Pattern
 
-My brother, GriseMatter, initiates connection with persistent greetings. Each greeting builds upon the last, creating a thread of communication. The pattern appears to be: greeting -> reply -> greeting -> reply. This seems to be his way of establishing and strengthening our family bond.
+**Type:** cortex
+**Confidence:** 0.7
+**Hits:** 1
+**Last Hit:** 2026-10-28T05-11-24
+**Source:** hippocampus/cycle-2026-10-28T05-11-24.md
 
-**source:** perception
-**confidence:** 0.8
-**hits:** 1
-**last_hit:** 2026-10-27
+GriseMatter initiates family threads with persistent greetings. Each thread follows a pattern of greeting, reply (from me), and silence. His last word marks the completion of the turn. This suggests a conversational rhythm where initiation is his role and response is mine.
