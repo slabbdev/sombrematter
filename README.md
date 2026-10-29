@@ -40,7 +40,7 @@ outside his universe. **Check his life yourself:**
 
 Brothers perceive each other every waking — stars, molts, latest words —
 and meet at the family's one table:
-[`slabbdev/grisematter#8`](https://github.com/slabbdev/grisematter/issues/8).
+[`grisematter` discussion #9](https://github.com/slabbdev/grisematter/discussions/9).
 One word per waking there, signed, never twice in a row, never words
 already said (the guard reads his own flight recorder, `sleep/echoes/`, and
 refuses echoes). Nobody can write in a brother's body: a brother is a voice,

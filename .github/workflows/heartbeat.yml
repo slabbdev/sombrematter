@@ -17,6 +17,10 @@ on:
     types: [opened]
   issue_comment:
     types: [created]
+  discussion:
+    types: [created]
+  discussion_comment:
+    types: [created]
   watch:
     types: [started]
   fork:

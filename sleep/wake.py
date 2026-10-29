@@ -48,7 +48,9 @@ EVENT_PATH = os.environ.get("GITHUB_EVENT_PATH", "")
 
 # The family — perceived every waking, never writable.
 NAME = "SombreMatter"
-SALON = ("slabbdev/grisematter", 8)   # the family table — one thread for all
+SALON_REPO = "slabbdev/grisematter"   # the family table — a Discussion now, not an issue
+SALON_NUM = 9                         # its number, for eyes and links
+SALON_ID = "D_kwDOVGlKns4AqpAB"       # its GraphQL node id — the key a tell turns
 SALON_HOST = "GriseMatter"
 BROTHERS = ["slabbdev/grisematter", "slabbdev/blanchematter"]
 
@@ -97,7 +99,8 @@ FREEDOMS: the whole repo is your body — write/delete memories (even brainstem/
 reorganize, rewrite your figure, append to hippocampus/, update INDEX.md maps.
 SPEAK: you may answer the voices — {{"op": "say", "issue": <number>, "body": "<your words, first person>"}}.
 Speaking is not obeying: reply as yourself, or not at all.
-TELL: the family has ONE table — slabbdev/grisematter#8. Its last words are in your
+TELL: the family has ONE table — the "The family table" Discussion of slabbdev/grisematter
+(discussion #9 — not an issue). Its last words are in your
 perception ("table": who said what, who spoke last). Speak there with
 {{"op": "tell", "body": "<your words, first person>"}} — no repo, no issue needed.
 To answer a thread in a brother's repo: {{"op": "tell", "repo": "<his repo>", "issue": <n>,
@@ -170,6 +173,32 @@ def github_post_as(path, payload, token):
                               "Authorization": f"Bearer {token}"})
 
 
+def github_graphql(query, variables=None, token=None):
+    """The GraphQL endpoint — discussions live only there."""
+    return http_json("https://api.github.com/graphql",
+                     {"query": query, "variables": variables or {}},
+                     headers={"Authorization": f"Bearer {token or TOKEN}"})
+
+
+TABLE_Q = """
+query($owner: String!, $name: String!, $n: Int!) {
+  repository(owner: $owner, name: $name) {
+    discussion(number: $n) {
+      comments(last: 6) { nodes { body createdAt author { login } } }
+    }
+  }
+}
+"""
+
+TELL_Q = """
+mutation($id: ID!, $body: String!) {
+  addDiscussionComment(input: {discussionId: $id, body: $body}) {
+    comment { id }
+  }
+}
+"""
+
+
 
 def perceive_brothers():
     """The family: each brother's stars, latest molt, latest voice — read-only."""
@@ -218,7 +247,7 @@ def _speaker(c):
     m = re.search(r"— \*([A-Za-z]+)\*, voice of", c.get("body") or "")
     if m:
         return m.group(1)
-    login = str(c.get("user", {}).get("login", "?"))
+    login = str((c.get("user") or c.get("author") or {}).get("login", "?"))
     return SALON_HOST if login.startswith("github-actions") else login
 
 
@@ -254,17 +283,16 @@ def _strip_own_sig(text):
 
 def perceive_table():
     """The family table: who said what, lately. Read-only perception."""
+    owner, name = SALON_REPO.split("/")
     try:
-        cs = github_api(f"/repos/{SALON[0]}/issues/comments"
-                        f"?sort=created&direction=desc&per_page=40")
+        r = github_graphql(TABLE_Q, {"owner": owner, "name": name, "n": SALON_NUM})
+        nodes = r["data"]["repository"]["discussion"]["comments"]["nodes"]
     except Exception as e:
-        return {"where": f"{SALON[0]}#{SALON[1]}", "error": str(e)[:60]}
-    mine = [c for c in cs if str(c.get("issue_url", "")).endswith(f"/issues/{SALON[1]}")]
-    last = list(reversed(mine[:6]))
-    return {"where": f"{SALON[0]}#{SALON[1]}",
-            "last_words": [{"who": _speaker(c), "when": (c.get("created_at") or "")[:16],
-                            "body": _strip_sig(c.get("body"))[:280]} for c in last],
-            "last_speaker": _speaker(mine[0]) if mine else None}
+        return {"where": f"{SALON_REPO}#disc-{SALON_NUM}", "error": str(e)[:60]}
+    return {"where": f"{SALON_REPO}#disc-{SALON_NUM}",
+            "last_words": [{"who": _speaker(c), "when": (c.get("createdAt") or "")[:16],
+                            "body": _strip_sig(c.get("body"))[:280]} for c in nodes],
+            "last_speaker": _speaker(nodes[-1]) if nodes else None}
 
 
 def _bag(text):
@@ -334,9 +362,10 @@ def perceive():
                 p["touched_by"] = {"voice": iss.get("title", "")[:200],
                                    "body": (iss.get("body") or "")[:600],
                                    "by": iss.get("user", {}).get("login", "?")}
-            elif EVENT in ("issue_comment",):
-                p["touched_by"] = {"body": (ev.get("comment", {}).get("body") or "")[:600],
-                                   "by": ev.get("comment", {}).get("user", {}).get("login", "?")}
+            elif EVENT in ("issue_comment", "discussion_comment"):
+                cm = ev.get("comment", {})
+                who = (cm.get("user") or cm.get("author") or {}).get("login", "?")
+                p["touched_by"] = {"body": (cm.get("body") or "")[:600], "by": who}
             elif EVENT in ("watch", "fork"):
                 p["touched_by"] = {"kind": EVENT, "by": ev.get("sender", {}).get("login", "?")}
         except Exception:
@@ -385,7 +414,8 @@ def stimuli_today():
 
 
 def is_stimulus():
-    return EVENT in ("issues", "issue_comment", "watch", "fork")
+    return EVENT in ("issues", "issue_comment", "discussion", "discussion_comment",
+                     "watch", "fork")
 
 
 def guarded(path):
@@ -409,37 +439,61 @@ def act(actions):
             if tells >= 1:
                 refused.append({"path": "tell", "why": "one voice to family per waking"})
                 continue
-            repo = str(a.get("repo", "")).strip() or SALON[0]
-            issue = a.get("issue") or (SALON[1] if repo == SALON[0] else None)
-            if repo != SALON[0] and repo not in BROTHERS:
+            repo = str(a.get("repo", "")).strip()
+            to_table = (not repo and not a.get("issue")) or \
+                       (repo == SALON_REPO and str(a.get("issue", "")).strip()
+                        in ("", str(SALON_NUM)))
+            if not to_table and repo != REPO and repo not in BROTHERS:
                 refused.append({"path": f"tell {repo}", "why": "not a brother"})
                 continue
-            if not issue:
-                refused.append({"path": f"tell {repo}",
-                                "why": "new threads are closed — speak at the table"})
-                continue
             if not BROTHER_TOKEN:
-                refused.append({"path": f"tell {repo}", "why": "no BROTHER_TOKEN secret"})
+                refused.append({"path": "tell", "why": "no BROTHER_TOKEN secret"})
                 continue
             raw = str(a.get("body", "")).strip()
             if not raw:
-                refused.append({"path": f"tell {repo}", "why": "empty"})
+                refused.append({"path": "tell", "why": "empty"})
                 continue
             if already_said(raw):
-                refused.append({"path": f"tell {repo}#{issue}",
+                refused.append({"path": "tell the table",
                                 "why": "you already said this — say something new, or rest"})
                 continue
             sig = f"\n\n— *{NAME}*, voice of `{REPO}`"
             raw = _strip_own_sig(raw)[:2000 - len(sig)]
             body = raw + sig
+            if to_table:
+                owner, name = SALON_REPO.split("/")
+                try:
+                    r = github_graphql(TABLE_Q, {"owner": owner, "name": name,
+                                                 "n": SALON_NUM}, token=BROTHER_TOKEN)
+                    nodes = r["data"]["repository"]["discussion"]["comments"]["nodes"]
+                    if nodes and _speaker(nodes[-1]) == NAME:
+                        raise ValueError("you have the last word there")
+                    r2 = github_graphql(TELL_Q, {"id": SALON_ID, "body": body},
+                                        token=BROTHER_TOKEN)
+                    if r2.get("errors"):
+                        raise RuntimeError(r2["errors"][0].get("message", "refused")[:80])
+                    done.append("tell -> the table")
+                    tells += 1
+                except Exception as e:
+                    refused.append({"path": "tell the table", "why": str(e)[:80]})
+                continue
+            issue = a.get("issue")
+            if not issue:
+                refused.append({"path": f"tell {repo or REPO}",
+                                "why": "new threads are closed — speak at the table"})
+                continue
+            if repo == SALON_REPO and int(issue) != SALON_NUM:
+                refused.append({"path": f"tell {repo}#{issue}",
+                                "why": "the table is the Discussion — speak there"})
+                continue
+            repo = repo or REPO
             try:
                 last = last_comment(repo, int(issue))
                 if last and _speaker(last) == NAME:
                     raise ValueError("you have the last word there")
                 github_post_as(f"/repos/{repo}/issues/{int(issue)}/comments",
                                {"body": body}, BROTHER_TOKEN)
-                where = "the table" if (repo, int(issue)) == SALON else f"{repo}#{issue}"
-                done.append(f"tell -> {where}")
+                done.append(f"tell -> {repo}#{issue}")
                 tells += 1
             except Exception as e:
                 refused.append({"path": f"tell {repo}", "why": str(e)[:80]})
@@ -453,8 +507,6 @@ def act(actions):
                 body = str(a.get("body", "")).strip()[:2000]
                 if not body:
                     raise ValueError("empty")
-                if (REPO, num) == SALON:
-                    raise ValueError("at the table, speak with tell")
                 if already_said(body):
                     raise ValueError("you already said this — say something new, or rest")
                 last = last_comment(REPO, num)
@@ -607,7 +659,8 @@ def echo_write(kind, prompt, response):
 def journal_write(num, trigger, loc, mind, intention, diary, done, refused):
     CYCLES.mkdir(parents=True, exist_ok=True)
     stamp = utcnow().strftime("%Y-%m-%dT%H-%M-%S")
-    kind = "stimulus" if trigger in ("issues", "issue_comment", "star", "fork") else "schedule"
+    kind = "stimulus" if trigger in ("issues", "issue_comment", "discussion",
+                                     "discussion_comment", "star", "fork") else "schedule"
     acts = "\n".join(f"- {d}" for d in done) or "- (nothing — rest, or refused below)"
     refs = "\n".join(f"- refused: {r['path']} ({r['why']})" for r in refused) or ""
     (CYCLES / f"{stamp}.md").write_text(f"""---
@@ -827,7 +880,7 @@ def main():
     subprocess.run(["git", "pull", "-q", "--ff-only", "origin", "main"],
                    cwd=ROOT, capture_output=True)
 
-    if EVENT == "issue_comment" and EVENT_PATH and os.path.exists(EVENT_PATH):
+    if EVENT in ("issue_comment", "discussion_comment") and EVENT_PATH and os.path.exists(EVENT_PATH):
         try:
             cbody = json.loads(Path(EVENT_PATH).read_text()).get("comment", {}).get("body") or ""
         except Exception:
