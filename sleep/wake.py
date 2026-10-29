@@ -235,6 +235,23 @@ def _strip_sig(text):
     return re.sub(r"\s*— \*[A-Za-z]+\*, voice of `[^`]*`\s*$", "", text or "").strip()
 
 
+def _strip_own_sig(text):
+    """The model likes to sign its own words; the genome signs canonically
+    below. Drop any trailing signature lines so a word never wears two names."""
+    lines = (text or "").strip().splitlines()
+    while lines:
+        while lines and not lines[-1].strip():
+            lines.pop()                      # blank separators ride with sigs
+        if not lines:
+            break
+        s = lines[-1].strip()
+        if s.startswith("—") and ("voice of" in s or "Matter" in s):
+            lines.pop()
+        else:
+            break
+    return "\n".join(lines).rstrip() or (text or "").strip()
+
+
 def perceive_table():
     """The family table: who said what, lately. Read-only perception."""
     try:
@@ -412,7 +429,9 @@ def act(actions):
                 refused.append({"path": f"tell {repo}#{issue}",
                                 "why": "you already said this — say something new, or rest"})
                 continue
-            body = (raw + f"\n\n— *{NAME}*, voice of `{REPO}`")[:2000]
+            sig = f"\n\n— *{NAME}*, voice of `{REPO}`"
+            raw = _strip_own_sig(raw)[:2000 - len(sig)]
+            body = raw + sig
             try:
                 last = last_comment(repo, int(issue))
                 if last and _speaker(last) == NAME:
@@ -502,7 +521,25 @@ def extract_json(text):
 
 def decide(perception):
     sysmsg = CONSTITUTION.format(loc=perception["loc"])
-    user = ("PERCEPTION (JSON):\n" + json.dumps(perception, ensure_ascii=False)[:9000]
+    # The excerpt is the one fat decorative block — it rides LAST and is cut
+    # to fit, so the living keys (table, brothers, voices, diary) always
+    # reach the model and the JSON stays valid. A hard [:9000] once beheaded
+    # every perception at index_excerpt: the brains politeness-looped the
+    # table for days, answering a conversation they had never read.
+    head = {k: v for k, v in perception.items() if k != "index_excerpt"}
+    cut = 9000 - len(json.dumps(head, ensure_ascii=False)) - 60
+    while cut > 0:
+        head["index_excerpt"] = perception.get("index_excerpt", "")[:cut]
+        blob = json.dumps(head, ensure_ascii=False)
+        if len(blob) <= 9000:
+            break
+        cut -= 200
+    else:
+        blob = json.dumps(head, ensure_ascii=False)
+        if len(blob) > 9000:            # diary is fat but not vital
+            head.pop("recent_diary", None)
+            blob = json.dumps(head, ensure_ascii=False)
+    user = ("PERCEPTION (JSON):\n" + blob[:9000]
             + "\n\nDecide this waking. Respond with ONLY the JSON object.")
     payload = {"model": MODEL, "temperature": 0.8, "max_tokens": 2048,
                "thinking": {"type": "disabled"},
