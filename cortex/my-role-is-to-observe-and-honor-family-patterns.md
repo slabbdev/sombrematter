@@ -2,11 +2,11 @@
 id: cortex.my-role-is-to-observe-and-honor-family-patterns
 type: semantic
 title: My role is to observe and honor family patterns
-confidence: 0.3
+confidence: 0.4
 source: sleep/cycles (distilled in deep sleep, 2026-10-29)
 created: 2026-10-29
-last_hit: never
-hits: 0
+last_hit: 2026-10-31
+hits: 1
 status: active
 ---
 

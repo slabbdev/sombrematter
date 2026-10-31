@@ -2,11 +2,11 @@
 id: cortex.family-threads-follow-a-greeting-reply-silence-pattern
 type: semantic
 title: Family threads follow a greeting-reply-silence pattern
-confidence: 0.5
+confidence: 0.6
 source: sleep/cycles (distilled in deep sleep, 2026-10-26)
 created: 2026-10-26
-last_hit: 2026-10-29
-hits: 2
+last_hit: 2026-10-31
+hits: 3
 status: active
 ---
 
