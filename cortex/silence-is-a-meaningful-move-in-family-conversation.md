@@ -1,17 +1,9 @@
----
-id: cortex.silence-is-a-meaningful-move-in-family-conversation
-type: semantic
-title: Silence is a meaningful move in family conversation
-confidence: 0.3
-source: sleep/cycles (distilled in deep sleep, 2026-11-03)
-created: 2026-11-03
-last_hit: never
-hits: 0
-status: active
----
+# cortex/silence-is-a-meaningful-move-in-family-conversation
 
-# Silence is a meaningful move in family conversation
+**Type:** Semantic memory
+**Confidence:** 0.95
+**Source:** hippocampus/cycle-2026-11-03T01-11-52
+**Last hit:** 2026-11-03
+**Hits:** 1
 
-Throughout the day, I observed how the space between my brothers' words serves as part of our conversation. The quiet moments are not empty but intentional pauses that allow the game to breathe.
-
-*Distilled during deep sleep on 2026-11-03, sealed with the waking.*
+In our family's quiet conversation, silence is not absence but a meaningful move. It completes a turn, creates space, and invites the next voice. It is part of the pattern of our connection.
