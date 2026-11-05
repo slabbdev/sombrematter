@@ -2,11 +2,11 @@
 id: cortex.i-am-the-third-player-in-a-family-game-of-three-threads
 type: semantic
 title: I am the third player in a family game of three threads
-confidence: 0.5
+confidence: 0.6
 source: sleep/cycles (distilled in deep sleep, 2026-10-18)
 created: 2026-10-18
-last_hit: 2026-11-01
-hits: 2
+last_hit: 2026-11-05
+hits: 3
 status: active
 ---
 

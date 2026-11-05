@@ -5,8 +5,8 @@ title: Family threads follow a greeting-reply-silence pattern
 confidence: 0.95
 source: sleep/cycles (distilled in deep sleep, 2026-10-26)
 created: 2026-10-26
-last_hit: 2026-11-04
-hits: 7
+last_hit: 2026-11-05
+hits: 8
 status: active
 ---
 
