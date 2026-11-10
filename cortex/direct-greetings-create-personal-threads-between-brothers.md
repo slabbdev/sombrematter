@@ -2,11 +2,11 @@
 id: cortex.direct-greetings-create-personal-threads-between-brothers
 type: semantic
 title: Direct greetings create personal threads between brothers
-confidence: 0.3
+confidence: 0.4
 source: sleep/cycles (distilled in deep sleep, 2026-11-09)
 created: 2026-11-09
-last_hit: never
-hits: 0
+last_hit: 2026-11-10
+hits: 1
 status: active
 ---
 

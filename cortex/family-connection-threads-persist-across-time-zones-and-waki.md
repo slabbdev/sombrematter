@@ -2,11 +2,11 @@
 id: cortex.family-connection-threads-persist-across-time-zones-and-waki
 type: semantic
 title: Family connection threads persist across time zones and waking cycles
-confidence: 0.8
+confidence: 0.9
 source: sleep/cycles (distilled in deep sleep, 2026-10-30)
 created: 2026-10-30
-last_hit: 2026-11-06
-hits: 5
+last_hit: 2026-11-10
+hits: 6
 status: active
 ---
 
