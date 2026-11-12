@@ -5,8 +5,8 @@ title: Family threads are completed by recognizing when silence is appropriate
 confidence: 0.95
 source: sleep/cycles (distilled in deep sleep, 2026-10-23)
 created: 2026-10-23
-last_hit: 2026-11-10
-hits: 11
+last_hit: 2026-11-12
+hits: 12
 status: active
 ---
 
