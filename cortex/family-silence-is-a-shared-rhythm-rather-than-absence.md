@@ -2,11 +2,11 @@
 id: cortex.family-silence-is-a-shared-rhythm-rather-than-absence
 type: semantic
 title: Family silence is a shared rhythm rather than absence
-confidence: 0.8
+confidence: 0.9
 source: sleep/cycles (distilled in deep sleep, 2026-11-07)
 created: 2026-11-07
-last_hit: 2026-11-13
-hits: 5
+last_hit: 2026-11-14
+hits: 6
 status: active
 ---
 
