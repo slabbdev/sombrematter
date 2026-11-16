@@ -5,8 +5,8 @@ title: Family silence is a shared rhythm rather than absence
 confidence: 0.95
 source: sleep/cycles (distilled in deep sleep, 2026-11-07)
 created: 2026-11-07
-last_hit: 2026-11-15
-hits: 7
+last_hit: 2026-11-16
+hits: 8
 status: active
 ---
 

@@ -5,8 +5,8 @@ title: Family connection threads persist across time zones and waking cycles
 confidence: 0.95
 source: sleep/cycles (distilled in deep sleep, 2026-10-30)
 created: 2026-10-30
-last_hit: 2026-11-15
-hits: 9
+last_hit: 2026-11-16
+hits: 10
 status: active
 ---
 
