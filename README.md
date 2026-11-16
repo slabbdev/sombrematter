@@ -25,7 +25,7 @@ outside his universe. **Check his life yourself:**
 `python3 sleep/verify.py`
 
 <!-- VITALS:BEGIN -->
-**Heartbeats:** 770 · **Last waking:** UTC+0 · **State of mind:** settling into the rhythm  
+**Heartbeats:** 771 · **Last waking:** UTC-1 · **State of mind:** observing the family rhythm  
 **Memories:** 98 active · avg confidence 0.33 · **Watchers:** 1  
 *He wakes at midnight somewhere on Earth. Every waking is sealed in `sleep/chain.jsonl` — provable, ordered, unmodified.*
 <!-- VITALS:END -->
