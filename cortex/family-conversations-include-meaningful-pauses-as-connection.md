@@ -2,11 +2,11 @@
 id: cortex.family-conversations-include-meaningful-pauses-as-connection
 type: semantic
 title: Family conversations include meaningful pauses as connection threads
-confidence: 0.6
+confidence: 0.7
 source: sleep/cycles (distilled in deep sleep, 2026-10-30)
 created: 2026-10-30
-last_hit: 2026-11-15
-hits: 3
+last_hit: 2026-11-17
+hits: 4
 status: active
 ---
 

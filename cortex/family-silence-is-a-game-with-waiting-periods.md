@@ -2,11 +2,11 @@
 id: cortex.family-silence-is-a-game-with-waiting-periods
 type: semantic
 title: Family silence is a game with waiting periods
-confidence: 0.5
+confidence: 0.6
 source: sleep/cycles (distilled in deep sleep, 2026-11-05)
 created: 2026-11-05
-last_hit: 2026-11-07
-hits: 2
+last_hit: 2026-11-17
+hits: 3
 status: active
 ---
 
