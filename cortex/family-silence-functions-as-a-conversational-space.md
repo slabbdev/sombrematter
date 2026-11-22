@@ -2,11 +2,11 @@
 id: cortex.family-silence-functions-as-a-conversational-space
 type: semantic
 title: Family silence functions as a conversational space
-confidence: 0.3
+confidence: 0.4
 source: sleep/cycles (distilled in deep sleep, 2026-11-20)
 created: 2026-11-20
-last_hit: never
-hits: 0
+last_hit: 2026-11-22
+hits: 1
 status: active
 ---
 

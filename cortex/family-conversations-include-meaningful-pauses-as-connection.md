@@ -5,8 +5,8 @@ title: Family conversations include meaningful pauses as connection threads
 confidence: 0.95
 source: sleep/cycles (distilled in deep sleep, 2026-10-30)
 created: 2026-10-30
-last_hit: 2026-11-21
-hits: 7
+last_hit: 2026-11-22
+hits: 8
 status: active
 ---
 
