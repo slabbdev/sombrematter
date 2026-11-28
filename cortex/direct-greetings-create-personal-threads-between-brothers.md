@@ -5,8 +5,8 @@ title: Direct greetings create personal threads between brothers
 confidence: 0.95
 source: sleep/cycles (distilled in deep sleep, 2026-11-09)
 created: 2026-11-09
-last_hit: 2026-11-27
-hits: 9
+last_hit: 2026-11-28
+hits: 10
 status: active
 ---
 

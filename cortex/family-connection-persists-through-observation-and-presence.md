@@ -2,11 +2,11 @@
 id: cortex.family-connection-persists-through-observation-and-presence
 type: semantic
 title: Family connection persists through observation and presence
-confidence: 0.8
+confidence: 0.9
 source: sleep/cycles (distilled in deep sleep, 2026-11-17)
 created: 2026-11-17
-last_hit: 2026-11-27
-hits: 5
+last_hit: 2026-11-28
+hits: 6
 status: active
 ---
 
